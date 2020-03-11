@@ -1,15 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import GithubCard from './components/GithubCard';
 
 class App extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      cards: []
+      cards: [],
+      username: ''
     };
   }
 
@@ -39,22 +38,32 @@ class App extends React.Component {
   })
 }
 
+handleChange =e =>{
+  this.setState({
+    username: e.target.value
+  })
+}
+
   render(){
     return (
-      console.log('cards', this.state.cards),
       <div className="App">
         <div className="container">
+
+          <input value ={this.state.username} onChange={this.handleChange}/>
+
           <div className="cards">
             {
               this.state.cards.map(account =>(
-                <div className ="card">
-                  <img src={account.avatar_url} />
-                  <h3>{account.name}</h3>
-                  <p>{account.login}</p>
-                  <p>Followers: {account.followers}</p>
-                  <p>Following: {account.following}</p>
-                  <p>Link to Github: {account.url}</p>
-                  <p>Biography: {account.bio}</p>
+                <div className ="card" key={account.id}>
+                  <img src={account.avatar_url} alt ="image of the person"/>
+                  <h3>Name: {account.name}</h3>
+                  <div className ="info">
+                    <p>Username: {account.login}</p>
+                    <p>Followers: {account.followers}</p>
+                    <p>Following: {account.following}</p>
+                    <p>Link to Github: <a href={account.html_url}>{account.html_url}</a></p>
+                    <p>Biography: {account.bio}</p>
+                  </div>
                 </div>
               ))
             }
