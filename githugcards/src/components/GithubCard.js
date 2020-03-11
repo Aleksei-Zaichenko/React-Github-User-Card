@@ -1,10 +1,11 @@
 import React from 'react';
 
-const GithubCard = () => {
+const GithubCard = props => {
+    console.log('props',props)
     return (
-        <div className='card'>
-            
-        </div>
+            <div>
+
+            </div>
     );
 };
 
