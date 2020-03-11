@@ -38,19 +38,54 @@ class App extends React.Component {
   })
 }
 
-handleChange =e =>{
-  this.setState({
-    username: e.target.value
-  })
-}
+// componentDidUpdate(prevProps, prevState) {
+//   if (prevState.cards !== this.state.cards) {
+//     axios
+//         .get(`https://api.github.com/users/${this.state.username}/followers`)
+//         .then(res =>{
+//             res.data.forEach(item => {
+//               axios
+//                 .get(item.url)
+//                 .then( response =>{
+//                   this.setState({
+//                     cards: [...this.state.cards, response.data]
+//                   })
+//                 })
+//             }
+//             )
+//           }) 
+//           .catch(err => console.log(err.message));
+//   }
+// }
+
+// handleChange =e =>{
+//   this.setState({
+//     username: e.target.value
+//   })
+// }
+
+// fetchUser = e =>{
+//   e.preventDefault();
+//   // axios
+//   //     .get(`https://api.github.com/users/${this.state.username}`)
+//   //     .then(res => {
+//   //       // res.data.message
+//   //       console.log(res.data);
+//   //       this.setState({
+//   //         cards: [res.data]
+//   //       });
+//   //       console.log(this.state.cards);
+//   //     })
+//   //     .catch(err => console.log(err.message));
+// }
 
   render(){
     return (
       <div className="App">
         <div className="container">
 
-          <input value ={this.state.username} onChange={this.handleChange}/>
-
+          {/* <input value ={this.state.username} onChange={this.handleChange}/>
+          <button onClick ={this.fetchUser}>Fetch</button> */}
           <div className="cards">
             {
               this.state.cards.map(account =>(
